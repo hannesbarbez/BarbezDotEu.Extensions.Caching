@@ -4,12 +4,12 @@ using Microsoft.Extensions.Caching.Memory;
 namespace BarbezDotEu.Extensions.Caching
 {
     /// <inheritdoc/>
-    public class EncapsulatedMemoryCache<T> : IEncapsulatedMemoryCache
+    public class EncapsulatedMemoryCache : IEncapsulatedMemoryCache
     {
         private readonly IMemoryCache memoryCache;
 
         /// <summary>
-        /// Constructs an <see cref="EncapsulatedMemoryCache{T}"/>.
+        /// Constructs an <see cref="EncapsulatedMemoryCache"/>.
         /// </summary>
         /// <param name="memoryCache">An instance of <see cref="IMemoryCache"/>.</param>
         public EncapsulatedMemoryCache(IMemoryCache memoryCache)
@@ -18,7 +18,7 @@ namespace BarbezDotEu.Extensions.Caching
         }
 
         /// <inheritdoc/>
-        public void GetOrCreate(string method, string differentiator, object cachable)
+        public void GetOrCreate<T>(string method, string differentiator, object cachable)
         {
             var key = $"{typeof(T).FullName}.{method}.{differentiator}";
             this.memoryCache.GetOrCreate(key, entry => cachable);
