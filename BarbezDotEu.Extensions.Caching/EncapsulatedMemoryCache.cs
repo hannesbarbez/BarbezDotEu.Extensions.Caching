@@ -1,5 +1,8 @@
 ﻿using BarbezDotEu.Extensions.Caching.Interfaces;
 using Microsoft.Extensions.Caching.Memory;
+using System;
+using System.Collections.Generic;
+using System.Text.Json;
 
 namespace BarbezDotEu.Extensions.Caching
 {
@@ -18,10 +21,29 @@ namespace BarbezDotEu.Extensions.Caching
         }
 
         /// <inheritdoc/>
-        public void GetOrCreate<T>(string method, string differentiator, object cachable)
+        public void Create<TCachable, TCaller>(string method, string differentiator, TCachable cachable)
         {
-            var key = $"{typeof(T).FullName}.{method}.{differentiator}";
-            this.memoryCache.GetOrCreate(key, entry => cachable);
+            var key = $"{typeof(TCaller).FullName}.{method}.{differentiator}";
+            this.memoryCache.GetOrCreate(key, entry => new KeyValuePair<string, string>(typeof(TCachable).AssemblyQualifiedName, JsonSerializer.Serialize(cachable)));
+        }
+
+        /// <inheritdoc/>
+        public TReturn Get<TReturn, TCaller>(string method, string differentiator)
+            where TReturn : class
+        {
+            var key = $"{typeof(TCaller).FullName}.{method}.{differentiator}";
+            var parsable = this.memoryCache.Get(key);
+            if (parsable != null && parsable is KeyValuePair<string, string> pair)
+            {
+                var valueType = Type.GetType(pair.Key);
+                var parsed = JsonSerializer.Deserialize(pair.Value, valueType);
+                if (parsed.GetType() == typeof(TReturn))
+                {
+                    return (TReturn) parsed;
+                }
+            }
+
+            return default;
         }
     }
 }

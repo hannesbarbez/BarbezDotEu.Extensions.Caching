@@ -8,12 +8,24 @@ namespace BarbezDotEu.Extensions.Caching.Interfaces
     public interface IEncapsulatedMemoryCache
     {
         /// <summary>
-        /// Gets or creates a cache entry.
+        /// Creates a cache entry.
         /// </summary>
-        /// <typeparam name="T">The name of the class where the caching is for or originates from.</typeparam>
+        /// <typeparam name="TCaller">The type where the caching is for or originates from.</typeparam>
+        /// <typeparam name="TCachable">The type of the object to cache.</typeparam>
         /// <param name="method">The name of the method to use as part of the caching key.</param>
         /// <param name="differentiator">The name of the differentiator to use as part of the caching key.</param>
         /// <param name="cachable">The object to cache.</param>
-        void GetOrCreate<T>(string method, string differentiator, object cachable);
+        void Create<TCachable, TCaller>(string method, string differentiator, TCachable cachable);
+
+        /// <summary>
+        /// Gets an object from cache.
+        /// </summary>
+        /// <typeparam name="TReturn">The return type.</typeparam>
+        /// <typeparam name="TCaller">The type where the caching is for or originates from.</typeparam>
+        /// <param name="method">The name of the method to use as part of the caching key.</param>
+        /// <param name="differentiator">The name of the differentiator to use as part of the caching key.</param>
+        /// <returns>The cached object, if any. Null if method and differentiator combined are not part of any caching key.</returns>
+        TReturn Get<TReturn, TCaller>(string method, string differentiator)
+            where TReturn : class;
     }
 }
