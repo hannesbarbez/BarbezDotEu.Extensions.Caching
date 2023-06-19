@@ -19,7 +19,7 @@
 		<RepositoryUrl>https://github.com/hannesbarbez/BarbezDotEu.Extensions.Caching</RepositoryUrl>
 		<RepositoryType>GIT</RepositoryType>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-		<PackageIconUrl>https://i2.wp.com/barbez.eu/wp-content/uploads/2020/02/cropped-BarbezDotEu-logo-1.png?resize=64%2C64</PackageIconUrl>
+		<PackageIconUrl>https://barbez.eu/wp-content/uploads/2023/06/icon1.png</PackageIconUrl>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
 	<ItemGroup>
