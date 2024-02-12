@@ -21,10 +21,10 @@ namespace BarbezDotEu.Extensions.Caching
         }
 
         /// <inheritdoc/>
-        public void Create<TCachable, TCaller>(string method, string differentiator, TCachable cachable)
+        public void Set<TCachable, TCaller>(string method, string differentiator, TCachable cachable, MemoryCacheEntryOptions options)
         {
             var key = $"{typeof(TCaller).FullName}.{method}.{differentiator}";
-            this.memoryCache.GetOrCreate(key, entry => new KeyValuePair<string, string>(typeof(TCachable).AssemblyQualifiedName, JsonSerializer.Serialize(cachable)));
+            this.memoryCache.Set(key, new KeyValuePair<string, string>(typeof(TCachable).AssemblyQualifiedName, JsonSerializer.Serialize(cachable)), options);
         }
 
         /// <inheritdoc/>
