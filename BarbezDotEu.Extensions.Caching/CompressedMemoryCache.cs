@@ -4,14 +4,13 @@ using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.IO.Compression;
 
 namespace BarbezDotEu.Extensions.Caching
 {
     /// <summary>
-    /// Implements an <see cref="IEncapsulatedMemoryCache"/> using a <see cref="GZipStream"/> to compress cached objects.
+    /// Implements an <see cref="IEncapsulatedMemoryCache"/> using <see cref="MessagePackSerializer"/> to compress cached objects.
     /// </summary>
-    public class EncapsulatedCompressedMemoryCache : AbstractEncapsulatedMemoryCache<KeyValuePair<string, byte[]>>, IEncapsulatedMemoryCache
+    public class CompressedMemoryCache : AbstractEncapsulatedMemoryCache<KeyValuePair<string, byte[]>>, IEncapsulatedMemoryCache
     {
         private readonly MessagePackSerializerOptions messagePackOptions = MessagePackSerializerOptions.Standard
             .WithCompression(MessagePackCompression.Lz4BlockArray);
@@ -20,7 +19,7 @@ namespace BarbezDotEu.Extensions.Caching
         /// Constructs an <see cref="EncapsulatedMemoryCache"/>.
         /// </summary>
         /// <param name="memoryCache">An instance of <see cref="IMemoryCache"/>.</param>
-        public EncapsulatedCompressedMemoryCache(IMemoryCache memoryCache)
+        public CompressedMemoryCache(IMemoryCache memoryCache)
             : base(memoryCache)
         {
         }
