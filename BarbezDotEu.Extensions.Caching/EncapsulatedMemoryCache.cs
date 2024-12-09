@@ -1,4 +1,7 @@
-﻿using BarbezDotEu.Extensions.Caching.Interfaces;
+﻿// Copyright (c) Hannes Barbez. All rights reserved.
+// Licensed under the MIT License.
+
+using BarbezDotEu.Extensions.Caching.Interfaces;
 using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;

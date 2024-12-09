@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Caching.Memory;
+﻿// Copyright (c) Hannes Barbez. All rights reserved.
+// Licensed under the MIT License.
+
+using Microsoft.Extensions.Caching.Memory;
 
 namespace BarbezDotEu.Extensions.Caching
 {
