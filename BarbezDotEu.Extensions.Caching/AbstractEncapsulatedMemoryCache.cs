@@ -15,7 +15,7 @@ namespace BarbezDotEu.Extensions.Caching
         protected readonly IMemoryCache memoryCache;
 
         /// <summary>
-        /// Constructs an <see cref="EncapsulatedMemoryCache"/>.
+        /// Constructs an <see cref="AbstractEncapsulatedMemoryCache{TItem}"/>.
         /// </summary>
         /// <param name="memoryCache">An instance of <see cref="IMemoryCache"/>.</param>
         protected AbstractEncapsulatedMemoryCache(IMemoryCache memoryCache)

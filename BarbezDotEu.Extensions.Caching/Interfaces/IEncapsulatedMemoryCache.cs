@@ -14,9 +14,9 @@ namespace BarbezDotEu.Extensions.Caching.Interfaces
         /// <typeparam name="TCachable">The type of the object to cache.</typeparam>
         /// <param name="method">The name of the method to use as part of the caching key.</param>
         /// <param name="differentiator">The name of the differentiator to use as part of the caching key.</param>
-        /// <param name="cachable">The object to cache.</param>
+        /// <param name="value">The object to cache.</param>
         /// <param name="options">The existing <see cref="MemoryCacheEntryOptions"/> instance to apply to the new entry.</param>
-        void Set<TCachable, TCaller>(string method, string differentiator, TCachable cachable, MemoryCacheEntryOptions options);
+        void Set<TCachable, TCaller>(string method, string differentiator, TCachable value, MemoryCacheEntryOptions options);
 
         /// <summary>
         /// Gets an object from cache.
