@@ -33,8 +33,8 @@
         <Optimize>true</Optimize>
     </PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="9.0.5" />
-		<PackageReference Include="System.Text.Json" Version="9.0.5" />
+		<PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="9.0.6" />
+		<PackageReference Include="System.Text.Json" Version="9.0.6" />
 		<None Include="..\README.md" Pack="true" PackagePath="\" />
 		<None Include="..\ICON.png" Pack="true" PackagePath="\" />
 	</ItemGroup>
