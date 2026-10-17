@@ -6,8 +6,8 @@
 		<Title>BarbezDotEu.Extensions.Caching</Title>
 		<Product>BarbezDotEu.Extensions.Caching</Product>
 		<PackageId>BarbezDotEu.Extensions.Caching</PackageId>
-		<Copyright>©2025 Hannes Barbez</Copyright>
-		<Version>3.0.2</Version>
+		<Copyright>©2026 Hannes Barbez</Copyright>
+		<Version>4.0.0</Version>
 		<Description>
 			Misc. extensions to Microsoft.Extensions.Caching.
 		</Description>
